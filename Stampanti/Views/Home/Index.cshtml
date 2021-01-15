@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Stampanti</h1>
+    <p class="lead">Qui di seguito trovi la lista delle stampanti.</p>
+</div>
+
+<div>
+    <table class="tabella">
+        <tr>
+            <td class="firstrow">Reparto</td>
+            <td class="firstrow">IP</td>
+            <td class="firstrow">Porta</td>
+        </tr>
+       @foreach (var stampante in ViewBag.Stampanti){
+        <tr>
+            <td class="otherrows">@stampante.Nome</td>
+            <td class="otherrows">@stampante.IP</td>
+            <td class="otherrows">@stampante.Port</td>
+        </tr>
+       }
+    </table>
+</div>
