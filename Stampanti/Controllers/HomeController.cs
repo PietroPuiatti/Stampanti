@@ -1,4 +1,5 @@
-﻿using Stampanti.Models;
+﻿using Stampanti.Data;
+using Stampanti.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +13,23 @@ namespace Stampanti.Controllers
 
         public HomeController()
         {
-            ElencoStampanti = new List<Stampante>();
-            ElencoStampanti.Add(new Stampante() { Nome = "Boh", IP = "1.1.1.1", Port = 9100 });
+            _stampantiRepository = new StampantiRepository();
+            _stampantiRepository.AddStampante(new Stampante { Nome = "Nome", IP = "2.2.2.2", Port = 9100 });
+            _stampantiRepository.AddStampante(new Stampante { Nome = "Nome2", IP = "2.4.3.1", Port = 9100 });
+            _stampantiRepository.AddStampante(new Stampante { Nome = "Nome2", IP = "5.4.3.1", Port = 9100 });
         }
-        public List<Stampante> ElencoStampanti { get; set; }
 
+        private StampantiRepository _stampantiRepository;
+        
         public ActionResult Index()
         {
-            ViewBag.Stampanti = ElencoStampanti;
             
-            return View();
+            return View(_stampantiRepository.GetStampanti());
         }
 
         public ActionResult AggiungiStampante()
         {
-            
-            ElencoStampanti.Add(new Stampante() { Nome = "Boh", IP= "1.1.1.1", Port=9100});
+ 
             return View();
         }
         public ActionResult About()
@@ -43,5 +45,7 @@ namespace Stampanti.Controllers
 
             return View();
         }
+
+        
     }
 }

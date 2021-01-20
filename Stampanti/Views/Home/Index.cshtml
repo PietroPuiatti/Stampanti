@@ -14,12 +14,18 @@
             <td class="firstrow">IP</td>
             <td class="firstrow">Porta</td>
         </tr>
-       @foreach (var stampante in ViewBag.Stampanti){
-        <tr>
-            <td class="otherrows">@stampante.Nome</td>
-            <td class="otherrows">@stampante.IP</td>
-            <td class="otherrows">@stampante.Port</td>
-        </tr>
-       }
-    </table>
+        @foreach (var stampante in Model)
+        {
+            <tr>
+
+                <td class="otherrows">@stampante.Nome</td>
+                <td class="otherrows">@stampante.IP</td>
+                <td class="otherrows">@stampante.Port</td>
+            </tr>
+        }
+        </table>
+         
+    <br />
+    <p>@ViewBag.Message<input type="text" /></p>
+    <input type="submit" />
 </div>
