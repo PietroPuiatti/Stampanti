@@ -10,4 +10,9 @@
     <IP>2.4.3.1</IP>
     <Port>9100</Port>
   </Stampante>
+  <Stampante>
+    <Nome>Nome3</Nome>
+    <IP>5.4.3.1</IP>
+    <Port>9100</Port>
+  </Stampante>
 </ArrayOfStampante>

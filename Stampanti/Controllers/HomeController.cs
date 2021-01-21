@@ -16,7 +16,8 @@ namespace Stampanti.Controllers
             _stampantiRepository = new StampantiRepository();
             _stampantiRepository.AddStampante(new Stampante { Nome = "Nome", IP = "2.2.2.2", Port = 9100 });
             _stampantiRepository.AddStampante(new Stampante { Nome = "Nome2", IP = "2.4.3.1", Port = 9100 });
-            _stampantiRepository.AddStampante(new Stampante { Nome = "Nome2", IP = "5.4.3.1", Port = 9100 });
+            _stampantiRepository.AddStampante(new Stampante { Nome = "Nome3", IP = "5.4.3.1", Port = 9100 });
+
         }
 
         private StampantiRepository _stampantiRepository;
@@ -41,9 +42,9 @@ namespace Stampanti.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Aggiungi stampante e port: ";
-
-            return View();
+            ViewBag.Message = "Seleziona la riga da cambiare ";
+            _stampantiRepository.GetStampante("");
+            return View(_stampantiRepository.GetStampanti());
         }
 
         

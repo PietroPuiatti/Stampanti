@@ -126,7 +126,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Stampante.cs" />
-    <Compile Include="Models\Tabella.cs" />
+    <Compile Include="Models\OggettiTabella.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

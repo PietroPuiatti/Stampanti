@@ -1,13 +1,28 @@
 ﻿@{
-    ViewBag.Title = "Aggiungi";
+    ViewBag.Title = "Aggiorna";
 }
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
+<div>
+    <table class="tabella">
+        <tr>
+            <td class="firstrow">Reparto</td>
+            <td class="firstrow">IP</td>
+            <td class="firstrow">Porta</td>
+        </tr>
+       @foreach(var stampante in Model)
+        {
+            <tr>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+                <td class="otherrows">@stampante.Nome<input type="text" /></td>
+                <td class="otherrows">@stampante.IP<input type="text" /></td>
+                <td class="otherrows">@stampante.Port</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <input type="submit" />
+    
+</div>
+
 

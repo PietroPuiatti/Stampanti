@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -57,6 +57,7 @@ namespace Stampanti.Data
             
         }
 
+        
         public void DeleteStampante(Stampante x)
         {
             if (_stampanti.Remove(x))
@@ -83,5 +84,12 @@ namespace Stampanti.Data
             return _stampanti.Find(p=>p.Nome==nome);
 
         }
+
+        public string GetNome(int i)
+        {
+            
+            return _stampanti[i].Nome;
+        }
+
     }
 }
