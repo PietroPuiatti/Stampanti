@@ -46,16 +46,25 @@ namespace Stampanti.Data
             }
         }
 
-        public void UpdateStampante()
+        public void UpdateStampante(Stampante x)
         {
-           GetNome(_stampanti.Count); 
+            
+            
+            if (x.Nome != null)
+            {
+                GetStampante(x.Nome);
+                
+            }
         }
 
         
         public void DeleteStampante(Stampante x)
         {
-            if (_stampanti.Remove(x))
+            var printer = GetStampante(x.Nome);
+            
+            if (x.Nome!= null)
             {
+                _stampanti.Remove(printer);
                 SaveStampanti();
             }
            

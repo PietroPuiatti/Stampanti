@@ -14,11 +14,24 @@ namespace Test
             stampante1.Nome = "Boh3";
             stampante1.IP = "3.3.33.3";
             stampante1.Port = 9100;
-            var stampante_1 = new Stampanti.Data.StampantiRepository();
-            stampante_1.AddStampante(stampante1);
-            Console.WriteLine(stampante1);
+            var stampantiRepository = new Stampanti.Data.StampantiRepository();
+            stampantiRepository.AddStampante(stampante1);
+            ElencoStampanti();
+            stampantiRepository.DeleteStampante(stampante1);
+            ElencoStampanti();
             Console.Read();
 
+        }
+
+        static void ElencoStampanti()
+        {
+            int count = 1;
+            var repo = new Stampanti.Data.StampantiRepository();
+            foreach(var stamp in repo.GetStampanti())
+            {
+                Console.WriteLine($"{count} {stamp.Nome} - {stamp.IP}: {stamp.Port}"); 
+                count++;
+            }
         }
     }
 }
