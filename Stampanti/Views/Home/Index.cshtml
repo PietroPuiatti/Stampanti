@@ -1,13 +1,11 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
+﻿
 <div class="jumbotron">
     <h1>Stampanti</h1>
     <p class="lead">Qui di seguito trovi la lista delle stampanti.</p>
 </div>
 
 <div>
+    
     <table class="tabella" id="Table">
         <tr>
             <td class="firstrow">Reparto</td>
@@ -23,8 +21,9 @@
                 <td class="otherrows">@stampante.Port</td>
             </tr>
         }
+        
         </table>
-         
+
     <br />
     <p>@ViewBag.Message<input type="text" /></p>
     <input type="submit" />

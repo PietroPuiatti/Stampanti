@@ -1,8 +1,5 @@
-﻿@{
-    ViewBag.Title = "Aggiorna";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<h1>Aggiorna Stampanti</h1>
+
 <div>
     <table class="tabella">
         <tr>
@@ -10,15 +7,17 @@
             <td class="firstrow">IP</td>
             <td class="firstrow">Porta</td>
         </tr>
-       @foreach(var stampante in Model)
+
+        @foreach (var stampante in Model)
         {
             <tr>
 
-                <td class="otherrows">@stampante.Nome<input type="text" /></td>
-                <td class="otherrows">@stampante.IP<input type="text" /></td>
+                <td class="otherrows">@stampante.Nome</td>
+                <td class="otherrows">@stampante.IP</td>
                 <td class="otherrows">@stampante.Port</td>
             </tr>
         }
+
     </table>
     <br />
     <input type="submit" />

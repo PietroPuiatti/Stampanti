@@ -121,11 +121,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Data\StampantiRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Stampante.cs" />
     <Compile Include="Models\OggettiTabella.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +179,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stampanti.Data\Stampanti.Data.csproj">
+      <Project>{c91a8015-3db4-423a-b86c-c3926f3ad0c7}</Project>
+      <Name>Stampanti.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Stampanti.Models\Stampanti.Models.csproj">
+      <Project>{cf9d043d-9521-4ea0-bbb6-2af5e600c3e7}</Project>
+      <Name>Stampanti.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

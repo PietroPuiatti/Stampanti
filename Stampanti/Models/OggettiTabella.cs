@@ -18,16 +18,6 @@ namespace Stampanti.Models
               
         }
 
-        public void GetNome()
-        {
-            
-        }
-
-        public void GetIP()
-        {
-           
-        }
-
     }
   
 }

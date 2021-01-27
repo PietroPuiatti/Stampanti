@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -10,9 +9,8 @@ namespace Stampanti.Data
 {
     public class StampantiRepository
     {
-        private List<Stampante> _stampanti;
         
-       
+        private List<Stampante> _stampanti;
 
         public StampantiRepository()
         {
@@ -48,13 +46,9 @@ namespace Stampanti.Data
             }
         }
 
-        public void UpdateStampante(Stampante s)
+        public void UpdateStampante()
         {
-           var upStamp = _stampanti.Find(p=> p.Nome == s.Nome);
-            upStamp.Nome = "";
-            upStamp.IP = "";
-            upStamp.Port = 0;
-            
+           GetNome(_stampanti.Count); 
         }
 
         
@@ -86,10 +80,16 @@ namespace Stampanti.Data
         }
 
         public string GetNome(int i)
-        {
-            
+        { 
             return _stampanti[i].Nome;
         }
 
+        public string GetIP(int x)
+        {
+
+            return _stampanti[x].IP;
+        }
+
+       
     }
 }

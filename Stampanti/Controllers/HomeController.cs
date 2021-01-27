@@ -30,7 +30,7 @@ namespace Stampanti.Controllers
 
         public ActionResult AggiungiStampante()
         {
- 
+            
             return View();
         }
         public ActionResult About()
@@ -40,11 +40,14 @@ namespace Stampanti.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        
+        public ActionResult Contact(Stampante sp)
         {
-            ViewBag.Message = "Seleziona la riga da cambiare ";
+            ViewBag.Nome = sp.Nome;
+            ViewBag.IP = sp.IP;
+            ViewBag.Port = sp.Port;
             _stampantiRepository.GetStampante("");
-            return View(_stampantiRepository.GetStampanti());
+            return View();
         }
 
         
