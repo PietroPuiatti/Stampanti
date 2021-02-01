@@ -11,6 +11,8 @@
             <td class="firstrow"><b>Reparto</b></td>
             <td class="firstrow"><b>IP</b></td>
             <td class="firstrow"><b>Porta</b></td>
+            <td class="firstrow"><b>Update</b></td>
+            <td class="firstrow"><b>Delete</b></td>
         </tr>
         @foreach (var stampante in Model)
         {
@@ -19,10 +21,12 @@
             <td class="otherrows">@stampante.Nome</td>
             <td class="otherrows">@stampante.IP</td>
             <td class="otherrows">@stampante.Port</td>
-            <td>
-                <button>@Html.ActionLink("Update", "Update", new { Id = stampante.Id })</button>
-                <button>@Html.ActionLink("-Delete", "Delete", new { Id = stampante.Id })</button>
+            <td class="otherrows">
+                @Html.ActionLink("Change", "Update", new { Id = stampante.Id })
             </td>
+             <td class="otherrows">
+                 @Html.ActionLink("Remove", "Delete", new { Id = stampante.Id })
+             </td>
          </tr>
         }
     </table>

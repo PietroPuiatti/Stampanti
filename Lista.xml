@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfStampante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Stampante>
-    <Id>3</Id>
-    <Nome>Nonloso</Nome>
+    <Id>1</Id>
+    <Nome>Nome2</Nome>
     <IP>9.9.9.9</IP>
     <Port>9100</Port>
   </Stampante>
