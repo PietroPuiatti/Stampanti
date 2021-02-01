@@ -9,7 +9,7 @@ namespace Stampanti.Data
 {
     public class StampantiRepository
     {
-        
+        private const string Path = @"C:\Users\Pietro\source\repos\Stampanti\Lista.xml";
         private List<Stampante> _stampanti;
 
         public StampantiRepository()
@@ -27,9 +27,14 @@ namespace Stampanti.Data
 
         public void AddStampante(Stampante stampante)
         {
-            var printer = GetStampante(stampante.Nome);
+            var printer = GetStampanteByNome(stampante.Nome);
             if (printer == null)
             {
+                var ids = (from s in _stampanti
+                         select s.Id).ToList();
+
+                var nextID = ids.Any() ? ids.Max() + 1 : 1;
+                stampante.Id = nextID;
 
                 _stampanti.Add(stampante);
                 SaveStampanti();
@@ -40,29 +45,34 @@ namespace Stampanti.Data
         private void SaveStampanti()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Stampante>));
-            using (TextWriter writer = new StreamWriter(@"C:\Users\Pietro\source\repos\Stampanti\Lista.xml"))
+            using (TextWriter writer = new StreamWriter(Path))
             {
                 serializer.Serialize(writer, _stampanti);
             }
         }
 
-        public void UpdateStampante(Stampante x)
+        public void UpdateStampante(int id, Stampante x)
         {
-            
-            
-            if (x.Nome != null)
+            var printer = GetStampanteById(id);
+           
+
+            if (printer != null)
             {
-                GetStampante(x.Nome);
-                
+                printer.Nome = x.Nome;
+                printer.IP = x.IP;
+                printer.Port = x.Port;
+
+                SaveStampanti();
             }
+            
         }
 
         
-        public void DeleteStampante(Stampante x)
+        public void DeleteStampante(int id)
         {
-            var printer = GetStampante(x.Nome);
+            var printer = GetStampanteById(id);
             
-            if (x.Nome!= null)
+            if (printer != null)
             {
                 _stampanti.Remove(printer);
                 SaveStampanti();
@@ -74,31 +84,26 @@ namespace Stampanti.Data
         private List<Stampante> ReadStampanti()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(List<Stampante>));
-            using (var stream = new FileStream(@"C:\Users\Pietro\source\repos\Stampanti\Lista.xml", FileMode.Open))
+            using (var stream = new FileStream(Path, FileMode.Open))
             {
                 return serializer.Deserialize(stream)as List<Stampante>;
             }
         }
 
-        public Stampante GetStampante(string nome)
+        public Stampante GetStampanteByNome(string nome)
         {
-           
-            
             return _stampanti.Find(p=>p.Nome==nome);
-
         }
 
-        public string GetNome(int i)
-        { 
-            return _stampanti[i].Nome;
-        }
-
-        public string GetIP(int x)
+        public Stampante GetStampanteById(int id)
         {
-
-            return _stampanti[x].IP;
+            return _stampanti.Find(p => p.Id == id);
         }
 
-       
+        public void Save()
+        {
+            SaveStampanti();
+        }
+   
     }
 }
