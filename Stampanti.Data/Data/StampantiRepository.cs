@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Xml.Serialization;
+using System.Web.Hosting;
 
 namespace Stampanti.Data
 {
     public class StampantiRepository
     {
-        private const string Path = @"E:\temp\Stampanti\Lista.xml";
+        
+        private string Path = HostingEnvironment.MapPath(@"\App_Data\Lista.xml");
         private List<Stampante> _stampanti;
 
         public StampantiRepository()
