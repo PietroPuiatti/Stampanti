@@ -9,14 +9,12 @@ namespace Stampanti.Data
 {
     public class StampantiRepository
     {
-        private const string Path = @"C:\Users\Pietro\source\repos\Stampanti\Lista.xml";
+        private const string Path = @"E:\temp\Stampanti\Lista.xml";
         private List<Stampante> _stampanti;
 
         public StampantiRepository()
         {
             _stampanti = ReadStampanti();
-
-            
         }
 
         public List<Stampante> GetStampanti()

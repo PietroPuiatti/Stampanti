@@ -21,9 +21,9 @@ namespace Test
             //stampantiRepository.AddStampante(stampante1);
             ElencoStampanti();
 
-            var stampante = stampantiRepository.GetStampante("Nome");
+            var stampante = stampantiRepository.GetStampanteByNome("Nome");
             
-            stampantiRepository.UpdateStampante(nome:"Nome3", stampante);
+            stampantiRepository.UpdateStampante(stampante.Id, stampante1);
             ElencoStampanti();
             Console.Read();
 
