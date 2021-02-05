@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStampante xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Stampante>
+    <Id>1</Id>
+    <Nome>Nooioioiihnj</Nome>
+    <IP>95.255.25.255</IP>
+    <Port>9100</Port>
+  </Stampante>
+  <Stampante>
+    <Id>2</Id>
+    <Nome>trbhbf666</Nome>
+    <IP>2.2.2.9</IP>
+    <Port>9100</Port>
+  </Stampante>
+</ArrayOfStampante>

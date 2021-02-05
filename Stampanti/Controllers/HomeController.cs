@@ -19,7 +19,7 @@ namespace Stampanti.Controllers
 
         }
 
-        private StampantiRepository _stampantiRepository;
+        private IStampantiRepository _stampantiRepository;
         
         public ActionResult Index()
         {
