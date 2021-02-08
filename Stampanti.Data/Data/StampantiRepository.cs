@@ -55,9 +55,9 @@ namespace Stampanti.Data
             }
         }
 
-        public void UpdateStampante(int id, Stampante x)
+        public void UpdateStampante(Stampante x)
         {
-            var printer = GetStampanteById(id);
+            var printer = GetStampanteById(x.Id);
 
 
             if (printer != null)

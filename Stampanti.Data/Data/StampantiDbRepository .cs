@@ -8,109 +8,133 @@ using System.Web.Hosting;
 using System.Configuration;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Data;
+using Dapper;
+using Dapper.Contrib.Extensions;
 
 namespace Stampanti.Data
 {
     public class StampantiDbRepository : IStampantiRepository
     {
-        
-        private string Path = HostingEnvironment.MapPath(@"\Lista.xml");
-        private List<Stampante> _stampanti;
-        //string Path = ConfigurationManager.AppSettings["xmlPath"].ToString();
-        SqlConnection connection;
+        private readonly string _connectionString;
 
-        
-
-        public StampantiDbRepository()
+        public StampantiDbRepository(string connectionString)
         {
-            _stampanti = ReadStampanti();
+            _connectionString = connectionString;
+            
         }
 
         public List<Stampante> GetStampanti()
         {
-            return _stampanti;
+            return ReadStampanti();
             
         }
 
         public void AddStampante(Stampante stampante)
         {
-            var printer = GetStampanteByNome(stampante.Nome);
-            if (printer == null)
+
+            try
             {
-                var ids = (from s in _stampanti
-                         select s.Id).ToList();
-
-                var nextID = ids.Any() ? ids.Max() + 1 : 1;
-                stampante.Id = nextID;
-
-                _stampanti.Add(stampante);
-                SaveStampanti();
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Insert<Stampante>(stampante);
+                }
+                ReadStampanti();
             }
-            
-        }
-
-        private void SaveStampanti()
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Stampante>));
-            using (TextWriter writer = new StreamWriter(Path))
+            catch(Exception e)
             {
-                serializer.Serialize(writer, _stampanti);
+                throw new Exception("Errore nell'Add", e);
             }
         }
 
-        public void UpdateStampante(int id, Stampante x)
+        
+        public void UpdateStampante(Stampante x)
         {
-            var printer = GetStampanteById(id);
-           
 
-            if (printer != null)
+            try
             {
-                printer.Nome = x.Nome;
-                printer.IP = x.IP;
-                printer.Port = x.Port;
-
-                SaveStampanti();
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Update(x);
+                }
             }
-            
+            catch(Exception e)
+            {
+                throw new Exception("Errore nell'Update", e);
+            }
         }
 
         
         public void DeleteStampante(int id)
         {
-            var printer = GetStampanteById(id);
-            
-            if (printer != null)
+            try
             {
-                _stampanti.Remove(printer);
-                SaveStampanti();
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    connection.Delete(new Stampante { Id = id });
+                }
             }
-           
-           
+            catch(Exception e)
+            {
+                throw new Exception("Errore nel Delete", e);
+
+            }
+
         }
 
         private List<Stampante> ReadStampanti()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Stampante>));
-            using (var stream = new FileStream(Path, FileMode.Open))
+            try
             {
-                return serializer.Deserialize(stream)as List<Stampante>;
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    string query = "SELECT id, RTRIM(Nome) as Nome, RTRIM(IP) as IP, Port FROM Stampanti";
+                    return (connection.Query<Stampante>(query).ToList());
+                }
+            }
+            catch(Exception e) 
+            {
+                throw new Exception("Errore nel Read", e);
             }
         }
 
         public Stampante GetStampanteByNome(string nome)
         {
-            return _stampanti.Find(p=>p.Nome==nome);
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    var stampante = connection.Get<Stampante>(nome);
+                    stampante.Nome = stampante.Nome.TrimEnd();
+                    stampante.IP = stampante.IP.TrimEnd();
+
+                    return stampante;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Errore nel GetStampanteByNome", e);
+            }
+
         }
 
         public Stampante GetStampanteById(int id)
         {
-            return _stampanti.Find(p => p.Id == id);
-        }
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    var stampante = connection.Get<Stampante>(id);
+                    stampante.Nome = stampante.Nome.TrimEnd();
+                    stampante.IP = stampante.IP.TrimEnd();
 
-        public void Save()
-        {
-            SaveStampanti();
+                    return stampante;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Errore nel GetStampanteById", e);
+            }
         }
-   
     }
 }

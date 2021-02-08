@@ -2,6 +2,7 @@
 using Stampanti.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,7 +15,7 @@ namespace Stampanti.Controllers
 
         public HomeController()
         {
-            _stampantiRepository = new StampantiRepository();
+            _stampantiRepository = new StampantiDbRepository(ConfigurationManager.ConnectionStrings["dbStampanti"].ConnectionString);
             
 
         }
@@ -32,13 +33,7 @@ namespace Stampanti.Controllers
             
             return View();
         }
-        public ActionResult About()
-        {
-            ViewBag.Message = "Aggiungi il nome del reparto: ";
-
-            return View();
-        }
-
+        
         public ActionResult Create()
         {
             return View();
@@ -60,23 +55,12 @@ namespace Stampanti.Controllers
             return View(printer);
         }
 
-       
         [HttpPost]
-        public ActionResult Update(int id, Stampante model)
+        public ActionResult Update(Stampante printer)
         {
-            var printer = _stampantiRepository.GetStampanteById(id);
+            _stampantiRepository.UpdateStampante(printer);
 
-            if (printer != null)
-            {
-                printer.Nome = model.Nome;
-                printer.IP = model.IP;
-                printer.Port = model.Port;
-
-                _stampantiRepository.Save();
-
-                return RedirectToAction("Index");
-            }else
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Delete()

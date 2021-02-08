@@ -10,7 +10,6 @@ namespace Stampanti.Data
         Stampante GetStampanteById(int id);
         Stampante GetStampanteByNome(string nome);
         List<Stampante> GetStampanti();
-        void Save();
-        void UpdateStampante(int id, Stampante x);
+        void UpdateStampante(Stampante x);
     }
 }
