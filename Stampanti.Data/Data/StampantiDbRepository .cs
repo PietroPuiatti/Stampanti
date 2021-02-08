@@ -18,10 +18,11 @@ namespace Stampanti.Data
     {
         private readonly string _connectionString;
 
-        public StampantiDbRepository(string connectionString)
+        public StampantiDbRepository()
         {
-            _connectionString = connectionString;
-            
+            _connectionString = @"Data Source =.\SQLEXPRESS; Password = sinapsi; Persist Security Info = True; User ID = sinapsi; Initial Catalog = Stampanti; MultipleActiveResultSets = True";
+
+
         }
 
         public List<Stampante> GetStampanti()

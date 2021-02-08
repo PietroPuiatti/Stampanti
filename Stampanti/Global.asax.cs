@@ -1,3 +1,4 @@
+using Stampanti.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace Stampanti
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            SimpleInjectorConfig.RegisterContainer();
         }
+
     }
 }

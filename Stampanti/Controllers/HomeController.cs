@@ -13,9 +13,9 @@ namespace Stampanti.Controllers
     public class HomeController : Controller
     {
 
-        public HomeController()
+        public HomeController(IStampantiRepository repository)
         {
-            _stampantiRepository = new StampantiDbRepository(ConfigurationManager.ConnectionStrings["dbStampanti"].ConnectionString);
+            _stampantiRepository = repository;
             
 
         }
