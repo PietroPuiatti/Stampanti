@@ -28,11 +28,11 @@ namespace Stampanti.Controllers
             return View(_stampantiRepository.GetStampanti());
         }
 
-        public ActionResult AggiungiStampante()
-        {
-            
-            return View();
-        }
+        // public ActionResult AggiungiStampante()
+        // {
+        //     
+        //     return View();
+        // }
         
         public ActionResult Create()
         {
@@ -77,14 +77,14 @@ namespace Stampanti.Controllers
     
         }
 
-        public ActionResult Contact(Stampante sp)
-        {
-            ViewBag.Nome = sp.Nome;
-            ViewBag.IP = sp.IP;
-            ViewBag.Port = sp.Port;
-           
-            return View();
-        }
+        // public ActionResult Contact(Stampante sp)
+        // {
+        //     ViewBag.Nome = sp.Nome;
+        //     ViewBag.IP = sp.IP;
+        //     ViewBag.Port = sp.Port;
+        //    
+        //     return View();
+        // }
 
         
     }

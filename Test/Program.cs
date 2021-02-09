@@ -9,36 +9,43 @@ using Stampanti.Models;
 
 namespace Test
 {
+    using Services;
+    using SimpleInjector;
+
     class Program
     {
-       
-
         static void Main(string[] args)
         {
-            string _connectionString = ConfigurationManager.ConnectionStrings["dbStampanti"].ConnectionString;
+            // Container registration
+            var container = new Container();
+            container.Register<IStampantiRepository, StampantiDbRepository>();
+            container.Register<IConfigurationService, ConfigurationService>();
+            container.Verify();
+
+            //string _connectionString = ConfigurationManager.ConnectionStrings["dbStampanti"].ConnectionString;
             var stampante1 = new Stampante();
             stampante1.Nome = "DadPrinter";
             stampante1.IP = "3.3.33.3";
             stampante1.Port = 9100;
             stampante1.Id = 8;
-            var stampantiRepository = new StampantiDbRepository(_connectionString);
+            var stampantiRepository = container.GetInstance<IStampantiRepository>();
             try
             {
                  stampantiRepository.UpdateStampante(stampante1);
-                 ElencoStampanti();
+                 ElencoStampanti(stampantiRepository);
             }
-             catch(Exception e)          
+            catch(Exception e)          
             {
                 Console.WriteLine(e.ToString());
             }
+            
             Console.Read();
         }
 
-        static void ElencoStampanti()
+        static void ElencoStampanti(IStampantiRepository repo)
         {
-            string _connectionString = ConfigurationManager.ConnectionStrings["dbStampanti"].ConnectionString;
             int count = 1;
-            var repo = new StampantiDbRepository(_connectionString);
+
             foreach(var stamp in repo.GetStampanti())
             {
                 Console.WriteLine($"{count} {stamp.Nome} - {stamp.IP}: {stamp.Port}"); 
