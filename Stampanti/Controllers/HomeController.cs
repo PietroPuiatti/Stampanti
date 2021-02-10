@@ -6,7 +6,9 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using FluentValidation;
+using FluentValidation.Results;
+using Stampanti.Models.Validators;
 
 namespace Stampanti.Controllers
 {
@@ -28,12 +30,6 @@ namespace Stampanti.Controllers
             return View(_stampantiRepository.GetStampanti());
         }
 
-        // public ActionResult AggiungiStampante()
-        // {
-        //     
-        //     return View();
-        // }
-        
         public ActionResult Create()
         {
             return View();
@@ -42,11 +38,30 @@ namespace Stampanti.Controllers
         [HttpPost]   
         public ActionResult Create(Stampante model)
         {
-            _stampantiRepository.AddStampante(model); 
 
-            string message = "Stampante aggiunta con successo";
-            ViewBag.Message = message;
-            return RedirectToAction("Index"); 
+            var validator = new StampantiValidator();
+
+            ValidationResult result = validator.Validate(model);
+
+            if (result.IsValid)
+            {
+                _stampantiRepository.AddStampante(model);
+
+                string message = "Stampante aggiunta con successo";
+                ViewBag.Message = message;
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (ValidationFailure failer in result.Errors)
+                {
+                    ModelState.AddModelError(failer.PropertyName, failer.ErrorMessage);
+                }
+            }
+            return View(model);
+
+
+           
         }
 
         public ActionResult Update(int id)
@@ -58,9 +73,24 @@ namespace Stampanti.Controllers
         [HttpPost]
         public ActionResult Update(Stampante printer)
         {
-            _stampantiRepository.UpdateStampante(printer);
+            var validator = new StampantiValidator();
 
-            return RedirectToAction("Index");
+            ValidationResult result = validator.Validate(printer);
+
+            if (result.IsValid)
+            {
+                _stampantiRepository.UpdateStampante(printer);
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (ValidationFailure failer in result.Errors)
+                {
+                    ModelState.AddModelError(failer.PropertyName, failer.ErrorMessage);
+                }
+            }
+            return View(printer);
         }
 
         public ActionResult Delete()
@@ -76,16 +106,6 @@ namespace Stampanti.Controllers
               return RedirectToAction("Index");
     
         }
-
-        // public ActionResult Contact(Stampante sp)
-        // {
-        //     ViewBag.Nome = sp.Nome;
-        //     ViewBag.IP = sp.IP;
-        //     ViewBag.Port = sp.Port;
-        //    
-        //     return View();
-        // }
-
-        
+       
     }
 }

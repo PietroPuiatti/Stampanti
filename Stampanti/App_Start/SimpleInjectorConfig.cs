@@ -2,6 +2,7 @@
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using Stampanti.Data;
+using Stampanti.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Stampanti.App_Start
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
             container.Register<IStampantiRepository, StampantiDbRepository>(Lifestyle.Scoped);
-            
+            container.Register<IConfigurationService, ConfigurationService>(Lifestyle.Scoped);
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 
             container.Verify();

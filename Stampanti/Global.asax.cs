@@ -1,3 +1,4 @@
+using FluentValidation.Mvc;
 using Stampanti.App_Start;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace Stampanti
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             SimpleInjectorConfig.RegisterContainer();
+            FluentValidationModelValidatorProvider.Configure();
         }
 
     }

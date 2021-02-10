@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Stampanti.Services;
 
 namespace Stampanti.Data
 {
@@ -18,9 +19,9 @@ namespace Stampanti.Data
     {
         private readonly string _connectionString;
 
-        public StampantiDbRepository()
+        public StampantiDbRepository(IConfigurationService configurationService)
         {
-            _connectionString = @"Data Source =.\SQLEXPRESS; Password = sinapsi; Persist Security Info = True; User ID = sinapsi; Initial Catalog = Stampanti; MultipleActiveResultSets = True";
+            _connectionString = configurationService.ConnectionStrings["dbStampanti"].ConnectionString;
 
 
         }

@@ -59,6 +59,10 @@
       <Project>{cf9d043d-9521-4ea0-bbb6-2af5e600c3e7}</Project>
       <Name>Stampanti.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Stampanti.Services\Stampanti.Services.csproj">
+      <Project>{f84850cc-4e9f-4403-b3f4-0625723e2380}</Project>
+      <Name>Stampanti.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -9,7 +9,7 @@ using Stampanti.Models;
 
 namespace Test
 {
-    using Services;
+    using Stampanti.Services;
     using SimpleInjector;
 
     class Program

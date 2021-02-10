@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stampanti.Data", "Stampanti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{E7EF233F-BF5C-4AAA-B44D-E5D0CD90A58D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stampanti.Services", "Stampanti.Services\Stampanti.Services.csproj", "{F84850CC-4E9F-4403-B3F4-0625723E2380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stampanti.Test", "Stampanti.Test\Stampanti.Test.csproj", "{E557D5F7-B127-488D-B7B3-EB48E440241A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{E7EF233F-BF5C-4AAA-B44D-E5D0CD90A58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7EF233F-BF5C-4AAA-B44D-E5D0CD90A58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7EF233F-BF5C-4AAA-B44D-E5D0CD90A58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F84850CC-4E9F-4403-B3F4-0625723E2380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F84850CC-4E9F-4403-B3F4-0625723E2380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F84850CC-4E9F-4403-B3F4-0625723E2380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F84850CC-4E9F-4403-B3F4-0625723E2380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E557D5F7-B127-488D-B7B3-EB48E440241A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E557D5F7-B127-488D-B7B3-EB48E440241A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E557D5F7-B127-488D-B7B3-EB48E440241A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E557D5F7-B127-488D-B7B3-EB48E440241A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
