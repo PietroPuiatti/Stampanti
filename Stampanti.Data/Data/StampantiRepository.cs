@@ -28,7 +28,6 @@ namespace Stampanti.Data
             return _stampanti;
 
         }
-
         public void AddStampante(Stampante stampante)
         {
             var printer = GetStampanteByNome(stampante.Nome);

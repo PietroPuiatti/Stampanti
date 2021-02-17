@@ -5,8 +5,9 @@
   
 
 <div class="form-horizontal">
-    <h4>Stampanti</h4>
-    <hr />
+    <br />
+    <h2>Aggiungi Stampante</h2>
+    <br />
     <div class="form-group">
         @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -31,11 +32,9 @@
         </div>
     </div>
 
-    
-
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Crea " class="btn btn-default" />
             @ViewBag.Message
         </div>
     </div>
@@ -43,7 +42,7 @@
 }
 
 <div>
-   @Html.ActionLink("Back to List", "Index")
+   @Html.ActionLink("Annulla", "Index")
 </div>
 
 @section Scripts {

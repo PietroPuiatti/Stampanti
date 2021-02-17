@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: ghostwhite;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,19 +23,45 @@ select,
 textarea {
     max-width: 280px;
 }
-.tabella{
-    width:100%;
+.tabella {
+    width: 75%;
     border: 1px solid black;
-    text-align:center;
+    text-align: center;
+    background-color: white;
 }
 .firstrow {
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-left: 3px;
-    margin-right: 3px;
-    border: 1px solid black;
+    border: 1px solid;
+    border-width: 1px;
+    border-color: black;
 }
 .otherrows {
     border: 1px solid black;
 }
-
+.jumbotron {
+    max-width: 75%;
+    background-color: ghostwhite;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .container .jumbotron,
+    .container-fluid .jumbotron {
+        padding-right: 10px;
+        padding-left: 20px;
+    }
+    .jumbotron h1,
+    .jumbotron .h1 {
+        font-size: 35px;
+    }
+}
+.text-allert{
+    color: red;
+}
+.text-danger {
+    color: red;
+}

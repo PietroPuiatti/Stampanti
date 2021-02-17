@@ -14,20 +14,16 @@ namespace Stampanti.Controllers
 {
     public class HomeController : Controller
     {
-
         public HomeController(IStampantiRepository repository)
         {
             _stampantiRepository = repository;
-            
-
         }
 
         private IStampantiRepository _stampantiRepository;
         
         public ActionResult Index()
         {
-            
-            return View(_stampantiRepository.GetStampanti());
+            return View(_stampantiRepository.GetStampanti());  
         }
 
         public ActionResult Create()
@@ -38,7 +34,6 @@ namespace Stampanti.Controllers
         [HttpPost]   
         public ActionResult Create(Stampante model)
         {
-
             var validator = new StampantiValidator();
 
             ValidationResult result = validator.Validate(model);
@@ -59,9 +54,6 @@ namespace Stampanti.Controllers
                 }
             }
             return View(model);
-
-
-           
         }
 
         public ActionResult Update(int id)
@@ -101,11 +93,8 @@ namespace Stampanti.Controllers
         [HttpPost] 
         public ActionResult Delete(int id)
         {
-     
               _stampantiRepository.DeleteStampante(id);
               return RedirectToAction("Index");
-    
         }
-       
     }
 }

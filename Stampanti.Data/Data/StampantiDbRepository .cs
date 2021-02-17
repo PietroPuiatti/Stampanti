@@ -22,14 +22,11 @@ namespace Stampanti.Data
         public StampantiDbRepository(IConfigurationService configurationService)
         {
             _connectionString = configurationService.ConnectionStrings["dbStampanti"].ConnectionString;
-
-
         }
 
         public List<Stampante> GetStampanti()
         {
             return ReadStampanti();
-            
         }
 
         public void AddStampante(Stampante stampante)
@@ -48,11 +45,9 @@ namespace Stampanti.Data
                 throw new Exception("Errore nell'Add", e);
             }
         }
-
         
         public void UpdateStampante(Stampante x)
         {
-
             try
             {
                 using (var connection = new SqlConnection(_connectionString))
@@ -65,7 +60,6 @@ namespace Stampanti.Data
                 throw new Exception("Errore nell'Update", e);
             }
         }
-
         
         public void DeleteStampante(int id)
         {
@@ -79,9 +73,7 @@ namespace Stampanti.Data
             catch(Exception e)
             {
                 throw new Exception("Errore nel Delete", e);
-
             }
-
         }
 
         private List<Stampante> ReadStampanti()
@@ -117,7 +109,6 @@ namespace Stampanti.Data
             {
                 throw new Exception("Errore nel GetStampanteByNome", e);
             }
-
         }
 
         public Stampante GetStampanteById(int id)

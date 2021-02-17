@@ -1,7 +1,6 @@
 ﻿
 <div class="jumbotron">
     <h1>Stampanti</h1>
-    <p class="lead">Qui di seguito trovi la lista delle stampanti.</p>
 </div>
 
 <div>
@@ -11,8 +10,8 @@
             <td class="firstrow"><b>Reparto</b></td>
             <td class="firstrow"><b>IP</b></td>
             <td class="firstrow"><b>Porta</b></td>
-            <td class="firstrow"><b>Update</b></td>
-            <td class="firstrow"><b>Delete</b></td>
+            <td class="firstrow"><b>Aggiorna</b></td>
+            <td class="firstrow"><b>Rimuovi</b></td>
         </tr>
         @foreach (var stampante in Model)
         {
@@ -22,10 +21,10 @@
             <td class="otherrows">@stampante.IP</td>
             <td class="otherrows">@stampante.Port</td>
             <td class="otherrows">
-                @Html.ActionLink("Change", "Update", new { Id = stampante.Id })
+                @Html.ActionLink("Cambia", "Update", new { Id = stampante.Id })
             </td>
              <td class="otherrows">
-                 @Html.ActionLink("Remove", "Delete", new { Id = stampante.Id })
+                 @Html.ActionLink("Elimina", "Delete", new { Id = stampante.Id })
              </td>
          </tr>
         }
