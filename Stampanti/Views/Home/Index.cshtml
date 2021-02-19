@@ -7,6 +7,8 @@
 
     <table class="tabella" id="Table">
         <tr>
+            <td class="firstrow"><b>Extra</b></td>
+            <td class="firstrow"><b>Nome PC</b></td>
             <td class="firstrow"><b>Reparto</b></td>
             <td class="firstrow"><b>IP</b></td>
             <td class="firstrow"><b>Porta</b></td>
@@ -15,18 +17,29 @@
         </tr>
         @foreach (var stampante in Model)
         {
-         <tr>
-
-            <td class="otherrows">@stampante.Nome</td>
-            <td class="otherrows">@stampante.IP</td>
-            <td class="otherrows">@stampante.Port</td>
-            <td class="otherrows">
-                @Html.ActionLink("Cambia", "Update", new { Id = stampante.Id })
-            </td>
-             <td class="otherrows">
-                 @Html.ActionLink("Elimina", "Delete", new { Id = stampante.Id })
-             </td>
-         </tr>
+            <tr>
+                @if (stampante.Extra !=  0)
+                {
+                <td class="otherrows">
+                    <span class="glyphicon glyphicon-check"></span>
+                </td>
+                }
+                else
+                {
+                    <td class="otherrows">
+                    </td>
+                }
+                <td class="otherrows">@stampante.PCName</td>
+                <td class="otherrows">@stampante.Nome</td>
+                <td class="otherrows">@stampante.IP</td>
+                <td class="otherrows">@stampante.Port</td>
+                <td class="otherrows">
+                    @Html.ActionLink("Cambia", "Update", new { Id = stampante.Id })
+                </td>
+                <td class="otherrows">
+                    @Html.ActionLink("Elimina", "Delete", new { Id = stampante.Id })
+                </td>
+            </tr>
         }
     </table>
     <br />

@@ -31,7 +31,6 @@ namespace Stampanti.Data
 
         public void AddStampante(Stampante stampante)
         {
-
             try
             {
                 using (var connection = new SqlConnection(_connectionString))
@@ -40,12 +39,12 @@ namespace Stampanti.Data
                 }
                 ReadStampanti();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception("Errore nell'Add", e);
             }
         }
-        
+
         public void UpdateStampante(Stampante x)
         {
             try
@@ -55,12 +54,12 @@ namespace Stampanti.Data
                     connection.Update(x);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception("Errore nell'Update", e);
             }
         }
-        
+
         public void DeleteStampante(int id)
         {
             try
@@ -70,7 +69,7 @@ namespace Stampanti.Data
                     connection.Delete(new Stampante { Id = id });
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new Exception("Errore nel Delete", e);
             }
@@ -82,11 +81,11 @@ namespace Stampanti.Data
             {
                 using (var connection = new SqlConnection(_connectionString))
                 {
-                    string query = "SELECT id, RTRIM(Nome) as Nome, RTRIM(IP) as IP, Port FROM Stampanti";
+                    string query = "SELECT id, RTRIM(PCName) as PCName, RTRIM(Nome) as Nome, RTRIM(IP) as IP, Extra, Port FROM Stampanti";
                     return (connection.Query<Stampante>(query).ToList());
                 }
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
                 throw new Exception("Errore nel Read", e);
             }

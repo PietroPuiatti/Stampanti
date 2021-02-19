@@ -15,6 +15,22 @@
     <h4>Stampanti</h4>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.Extra, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ExtraBool, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ExtraBool, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PCName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PCName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PCName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
@@ -29,7 +45,7 @@
             @Html.ValidationMessageFor(model => model.IP, "", new { @class = "text-danger" })
         </div>
     </div>
-   
+
     <div class="form-group">
         @Html.LabelFor(model => model.Port, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">

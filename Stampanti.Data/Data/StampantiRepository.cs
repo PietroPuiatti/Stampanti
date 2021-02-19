@@ -107,6 +107,11 @@ namespace Stampanti.Data
         {
             SaveStampanti();
         }
+        public void MangaeExtras() { }
 
+        //public void ManageExtras(Stampante stampante)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

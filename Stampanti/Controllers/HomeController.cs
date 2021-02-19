@@ -71,6 +71,7 @@ namespace Stampanti.Controllers
 
             if (result.IsValid)
             {
+                
                 _stampantiRepository.UpdateStampante(printer);
 
                 return RedirectToAction("Index");

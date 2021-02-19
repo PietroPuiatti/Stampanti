@@ -11,6 +11,5 @@ namespace Stampanti.Data
         Stampante GetStampanteByNome(string nome);
         List<Stampante> GetStampanti();
         void UpdateStampante(Stampante x);
-
     }
 }
