@@ -65,3 +65,10 @@ textarea {
 .text-danger {
     color: red;
 }
+.ExtraInput{
+    position:relative;
+    float:left;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 10%;
+}

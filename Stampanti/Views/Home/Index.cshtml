@@ -13,7 +13,7 @@
             <td class="firstrow"><b>IP</b></td>
             <td class="firstrow"><b>Porta</b></td>
             <td class="firstrow"><b>Aggiorna</b></td>
-            <td class="firstrow"><b>Rimuovi</b></td>
+            <td class="firstrow"><span class="glyphicon glyphicon-trash"></span></td>
         </tr>
         @foreach (var stampante in Model)
         {
@@ -21,7 +21,7 @@
                 @if (stampante.Extra !=  0)
                 {
                 <td class="otherrows">
-                    <span class="glyphicon glyphicon-check"></span>
+                    <span class="glyphicon glyphicon-ok"></span> 
                 </td>
                 }
                 else
@@ -34,7 +34,7 @@
                 <td class="otherrows">@stampante.IP</td>
                 <td class="otherrows">@stampante.Port</td>
                 <td class="otherrows">
-                    @Html.ActionLink("Cambia", "Update", new { Id = stampante.Id })
+                     @Html.ActionLink("Cambia", "Update", new { Id = stampante.Id })
                 </td>
                 <td class="otherrows">
                     @Html.ActionLink("Elimina", "Delete", new { Id = stampante.Id })
@@ -45,6 +45,7 @@
     <br />
     <div>
         <button>
+            <span class="glyphicon glyphicon-plus"></span>
             @Html.ActionLink("Aggiungi", "Create")
         </button>
     </div>
